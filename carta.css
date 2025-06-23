@@ -8,7 +8,7 @@
   width: 90%;
   max-width: 700px;
   max-height: 90vh;
-  padding: 0 40px; /* solo horizontal */
+  padding: 60px 40px;
   background: linear-gradient(#fdf3e7, #f9e8c5);
   border: 8px solid #d8b97d;
   border-radius: 15px;
@@ -25,6 +25,7 @@
   padding-bottom: 0;
   transition: height 1.2s ease, opacity 1s ease, padding 1s ease;
 }
+
 .pergamino.open {
   height: 90vh;
   opacity: 1;
@@ -42,9 +43,10 @@
 }
 
 .pergamino p {
-  margin-bottom: 1.5em;
-  text-align: justify;
+  font-size: 1.4em; /* más grande que antes */
+  line-height: 1.9em;
 }
+
 
 
 body {
@@ -285,4 +287,27 @@ body {
 
 
 
- 
+ @media (max-width: 600px) {
+  .pergamino {
+    width: 95%;
+    max-height: 85vh;
+    font-size: 1.4em;
+    padding: 50px 25px;
+    top: 55%; /* baja un poco la carta */
+    transform: translate(-50%, -55%);
+  }
+
+  .pergamino h2 {
+    font-size: 2em;
+  }
+
+  .boton-dulce a {
+    font-size: 2.5em;
+  }
+}
+@media (max-width: 600px) {
+  .pergamino p {
+    font-size: 1.6em;
+    line-height: 2.1em;
+  }
+}

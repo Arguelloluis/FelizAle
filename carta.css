@@ -291,23 +291,25 @@ body {
   .pergamino {
     width: 95%;
     max-height: 85vh;
-    font-size: 1.4em;
+    font-size: 2em; /* letra más grande también */
     padding: 50px 25px;
-    top: 55%; /* baja un poco la carta */
-    transform: translate(-50%, -55%);
+    top: 60%; /* baja un poco la carta */
+    transform: translate(-50%, -60%);
   }
 
   .pergamino h2 {
-    font-size: 2em;
+    font-size: 2.5em;
   }
 
   .boton-dulce a {
     font-size: 2.5em;
   }
 }
+
 @media (max-width: 600px) {
   .pergamino p {
-    font-size: 1.6em;
-    line-height: 2.1em;
+    font-size: 4em;       /* Mucho más grande en celular */
+    line-height: 2.4em;   /* Para mejor lectura */
   }
 }
+

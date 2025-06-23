@@ -283,12 +283,21 @@
             overflow: hidden;
         }
 
-        .photo-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-        }
+     .photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    display: none; /* Oculto por defecto */
+}
+
+.photo-placeholder.has-image img {
+    display: block; /* Mostrar cuando hay imagen */
+}
+
+.photo-placeholder.has-image .dessert-icon {
+    display: none; /* Ocultar emoji cuando hay imagen */
+}
 
         .photo-placeholder:before {
             content: '';
@@ -588,37 +597,40 @@
     <div class="carousel-container" id="carouselContainer">
     <div class="main-carousel" id="mainCarousel">
         
-        <!-- Panel 1: Foto Personal -->
-        <div class="carousel-item">
-            <div class="photo-placeholder">
-                <div class="dessert-icon">👩‍🍳</div>
-                <div style="position: absolute; bottom: 10px; font-size: 0.8rem; color: #2d3436;">Tu Foto Aquí</div>
-            </div>
-            <div class="item-title">La Reina de los Dulces</div>
-            <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus creaciones</div>
-        </div>
-        
-        <!-- Panel 2: Cupcakes -->
-        <div class="carousel-item">
-            <div class="photo-placeholder">
-                <div class="dessert-icon">🧁</div>
-            </div>
-            <div class="item-title">Cupcakes Mágicos</div>
-            <div class="item-description">Cada cupcake que haces es una pequeña obra de arte que alegra corazones y celebraciones</div>
-        </div>
-        
-        <!-- Panel 3: Tortas Especiales -->
-        <div class="carousel-item">
-            <div class="photo-placeholder">
-                <div class="dessert-icon">🎂</div>
-            </div>
-            <div class="item-title">Tortas de Ensueño</div>
-            <div class="item-description">Tus tortas cuentan historias de amor, celebración y momentos únicos e irrepetibles</div>
-        </div>
+       <!-- Panel 1: Foto Personal -->
+<div class="carousel-item">
+    <div class="photo-placeholder has-image">
+        <img src="meme.PNG" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div> <!-- Se oculta automáticamente con CSS cuando hay imagen -->
+    </div>
+    <div class="item-title">La Reina de los Dulces</div>
+    <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus creaciones</div>
+</div>
+
+<!-- Panel 2: Cupcakes -->
+<div class="carousel-item">
+    <div class="photo-placeholder has-image">
+        <img src="cupcakes.jpg" alt="Cupcakes">
+        <div class="dessert-icon">🧁</div>
+    </div>
+    <div class="item-title">Cupcakes Mágicos</div>
+    <div class="item-description">Cada cupcake que haces es una pequeña obra de arte que alegra corazones y celebraciones</div>
+</div>
+
+<!-- Panel 3: Tortas -->
+<div class="carousel-item">
+    <div class="photo-placeholder has-image">
+        <img src="tortas.jpg" alt="Tortas">
+        <div class="dessert-icon">🎂</div>
+    </div>
+    <div class="item-title">Tortas de Ensueño</div>
+    <div class="item-description">Tus tortas cuentan historias de amor, celebración y momentos únicos e irrepetibles</div>
+</div>
         
         <!-- Panel 4: Galletas Artísticas -->
         <div class="carousel-item">
-            <div class="photo-placeholder">
+            <div class="photo-placeholder" id="photo4">
+                <img src="" alt="Galletas" onload="showImage(this)" onerror="hideImage(this)">
                 <div class="dessert-icon">🍪</div>
             </div>
             <div class="item-title">Galletas con Alma</div>
@@ -627,7 +639,8 @@
         
         <!-- Panel 5: Postres Únicos -->
         <div class="carousel-item">
-            <div class="photo-placeholder">
+            <div class="photo-placeholder" id="photo5">
+                <img src="" alt="Postres" onload="showImage(this)" onerror="hideImage(this)">
                 <div class="dessert-icon">🍰</div>
             </div>
             <div class="item-title">Postres Inolvidables</div>
@@ -636,7 +649,8 @@
         
         <!-- Panel 6: Sabor Único Brand -->
         <div class="carousel-item">
-            <div class="photo-placeholder">
+            <div class="photo-placeholder" id="photo6">
+                <img src="" alt="Sabor Único" onload="showImage(this)" onerror="hideImage(this)">
                 <div class="dessert-icon">⭐</div>
             </div>
             <div class="item-title">Sabor Único</div>
@@ -645,23 +659,22 @@
 
         <!-- Panel 7: Tus Manos Creadoras -->
         <div class="carousel-item">
-            <div class="photo-placeholder">
+            <div class="photo-placeholder" id="photo7">
+                <img src="" alt="Manos creadoras" onload="showImage(this)" onerror="hideImage(this)">
                 <div class="dessert-icon">👐</div>
             </div>
             <div class="item-title">Manos de Oro</div>
             <div class="item-description">Con tus manos creas no solo dulces, sino momentos especiales y recuerdos que duran para siempre</div>
         </div>
 
-    </div>
 </div>
 
     <!-- Controles -->
     <div class="controls" id="controls">
-        <button class="control-btn" onclick="pauseCarousel()">⏸️ Pausar</button>
-        <button class="control-btn" onclick="resumeCarousel()">▶️ Continuar</button>
-        <button class="control-btn" onclick="speedUp()">⚡ Acelerar</button>
-        <button class="control-btn" onclick="slowDown()">🐌 Lento</button>
-    </div>
+    <button class="control-btn" id="pauseResumeBtn" onclick="togglePauseResume()">⏸️ Pausar</button>
+    <button class="control-btn" onclick="speedUp()">⚡ Acelerar</button>
+    <button class="control-btn" onclick="slowDown()">🐌 Lento</button>
+</div>
 
     <!-- Elementos flotantes -->
     <div class="floating-elements" id="floatingElements"></div>
@@ -701,47 +714,39 @@
             document.getElementById('particles').innerHTML = '';
         }
 
-        function showCarousel() {
-            const landingPage = document.getElementById('landingPage');
-            const carouselContainer = document.getElementById('carouselContainer');
-            const birthdayMessage = document.getElementById('birthdayMessage');
-            const backBtn = document.getElementById('backBtn');
-            const controls = document.getElementById('controls');
-            const photoInstructions = document.getElementById('photoInstructions');
-            
-            landingPage.classList.add('hidden');
-            
-            setTimeout(() => {
-                carouselContainer.classList.add('visible');
-                birthdayMessage.classList.add('visible');
-                backBtn.classList.add('visible');
-                controls.classList.add('visible');
-                photoInstructions.classList.add('visible');
-                startFloatingElements();
-                startParticles();
-            }, 1200);
-        }
+       function showCarousel() {
+    const landingPage = document.getElementById('landingPage');
+    const carouselContainer = document.getElementById('carouselContainer');
+    const backBtn = document.getElementById('backBtn');
+    const controls = document.getElementById('controls');
+    
+    landingPage.classList.add('hidden');
+    
+    setTimeout(() => {
+        carouselContainer.classList.add('visible');
+        backBtn.classList.add('visible');
+        controls.classList.add('visible'); // Esta línea hace visible los controles
+        startFloatingElements();
+        startParticles();
+    }, 1200);
+}
 
-        function showLanding() {
-            const landingPage = document.getElementById('landingPage');
-            const carouselContainer = document.getElementById('carouselContainer');
-            const birthdayMessage = document.getElementById('birthdayMessage');
-            const backBtn = document.getElementById('backBtn');
-            const controls = document.getElementById('controls');
-            const photoInstructions = document.getElementById('photoInstructions');
-            
-            carouselContainer.classList.remove('visible');
-            birthdayMessage.classList.remove('visible');
-            backBtn.classList.remove('visible');
-            controls.classList.remove('visible');
-            photoInstructions.classList.remove('visible');
-            stopFloatingElements();
-            stopParticles();
-            
-            setTimeout(() => {
-                landingPage.classList.remove('hidden');
-            }, 500);
-        }
+       function showLanding() {
+    const landingPage = document.getElementById('landingPage');
+    const carouselContainer = document.getElementById('carouselContainer');
+    const backBtn = document.getElementById('backBtn');
+    const controls = document.getElementById('controls');
+    
+    carouselContainer.classList.remove('visible');
+    backBtn.classList.remove('visible');
+    controls.classList.remove('visible'); // Esta línea oculta los controles
+    stopFloatingElements();
+    stopParticles();
+    
+    setTimeout(() => {
+        landingPage.classList.remove('hidden');
+    }, 500);
+}
 
         function createFloatingElement() {
             const elements = ['🎂', '🧁', '🍪', '🎉', '✨', '💖', '🌟', '🎈', '🍰', '🎁'];
@@ -775,12 +780,26 @@
             const carousel = document.getElementById('mainCarousel');
             carousel.style.animationPlayState = 'paused';
             isPaused = true;
+            
+            // Cambiar el botón
+            const pauseBtn = document.querySelector('.control-btn[onclick="pauseCarousel()"]');
+            if (pauseBtn) {
+                pauseBtn.innerHTML = '▶️ Reanudar';
+                pauseBtn.setAttribute('onclick', 'resumeCarousel()');
+            }
         }
 
         function resumeCarousel() {
             const carousel = document.getElementById('mainCarousel');
             carousel.style.animationPlayState = 'running';
             isPaused = false;
+            
+            // Cambiar el botón
+            const resumeBtn = document.querySelector('.control-btn[onclick="resumeCarousel()"]');
+            if (resumeBtn) {
+                resumeBtn.innerHTML = '⏸️ Pausar';
+                resumeBtn.setAttribute('onclick', 'pauseCarousel()');
+            }
         }
 
         function speedUp() {
@@ -965,12 +984,15 @@
             }
         });
 
-        // Inicialización
+         // Inicialización
         window.addEventListener('load', function() {
             // Precargar algunas partículas
             for (let i = 0; i < 20; i++) {
                 setTimeout(createParticle, i * 100);
             }
+            
+            // Descomenta esta línea cuando tengas las fotos listas:
+            // loadPhotos();
         });
 
         const audio = new Audio('villancico.mp3'); // Cambia 'villancico.mp3' por la ruta de tu archivo
@@ -989,6 +1011,103 @@ document.getElementById('playButton').addEventListener('click', function() {
         this.textContent = 'Pausar'; // Cambiar texto del botón
     }
     isPlaying = !isPlaying; // Cambiar el estado de reproducción
+});
+
+// Función para mostrar imagen cuando se carga correctamente
+        function showImage(img) {
+            img.style.display = 'block';
+            img.parentElement.classList.add('has-image');
+        }
+
+        // Función para ocultar imagen si no se puede cargar
+        function hideImage(img) {
+            img.style.display = 'none';
+            img.parentElement.classList.remove('has-image');
+        }
+
+        // Función para cargar fotos (puedes llamar esta función con las URLs de tus fotos)
+        function loadPhotos() {
+            // Cambia estas rutas por las de tus fotos reales
+            const photos = [
+                'meme.PNG',    // Foto personal
+                'cupcakes.jpg', // Cupcakes
+                'tortas.jpg',   // Tortas
+                'galletas.jpg', // Galletas
+                'postres.jpg',  // Postres
+                'logo.jpg',     // Logo Sabor Único
+                'manos.jpg'     // Manos trabajando
+            ];
+            
+            photos.forEach((photoUrl, index) => {
+                const img = document.querySelector(`#photo${index + 1} img`);
+                if (img && photoUrl) {
+                    img.src = photoUrl;
+                }
+            });
+        }
+
+        // Para cargar las fotos automáticamente, descomenta esta línea:
+        // loadPhotos();
+
+        // Control mejorado de pausa/reanudación
+function togglePauseResume() {
+    const carousel = document.getElementById('mainCarousel');
+    const btn = document.getElementById('pauseResumeBtn');
+    
+    if (isPaused) {
+        carousel.style.animationPlayState = 'running';
+        btn.innerHTML = '⏸️ Pausar';
+        isPaused = false;
+    } else {
+        carousel.style.animationPlayState = 'paused';
+        btn.innerHTML = '▶️ Reanudar';
+        isPaused = true;
+    }
+}
+
+// Elimina estas funciones antiguas (reemplazadas por togglePauseResume):
+// function pauseCarousel() { ... }
+// function resumeCarousel() { ... }
+
+// Actualizar el hover effect para que respete el estado de pausa
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('mainCarousel');
+    
+    carousel.addEventListener('mouseenter', function() {
+        if (!isPaused) {
+            this.style.animationPlayState = 'paused';
+        }
+    });
+
+    carousel.addEventListener('mouseleave', function() {
+        if (!isPaused) {
+            this.style.animationPlayState = 'running';
+        }
+    });
+
+    // Iniciar partículas inmediatamente
+    startParticles();
+});
+
+// Actualizar los efectos de teclado
+document.addEventListener('keydown', function(e) {
+    switch(e.key) {
+        case ' ':
+            e.preventDefault();
+            togglePauseResume();
+            break;
+        case 'ArrowUp':
+            e.preventDefault();
+            speedUp();
+            break;
+        case 'ArrowDown':
+            e.preventDefault();
+            slowDown();
+            break;
+        case 'Escape':
+            showLanding();
+            break;
+    }
 });
     </script>
 </body>

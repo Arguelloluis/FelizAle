@@ -220,25 +220,26 @@
         }
 
         .carousel-item {
-            position: absolute;
-            width: 280px;
-            height: 350px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 
-                0 25px 50px rgba(0,0,0,0.2),
-                0 0 0 1px rgba(255,255,255,0.3),
-                inset 0 1px 0 rgba(255,255,255,0.6);
-            backdrop-filter: blur(20px);
-            padding: 25px;
-            text-align: center;
-            transition: all 0.4s ease;
-            overflow: hidden;
-        }
+    position: absolute;
+    width: 280px;
+    height: 350px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 
+        0 25px 50px rgba(0,0,0,0.2),
+        0 0 0 1px rgba(255,255,255,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+    backdrop-filter: blur(20px);
+    padding: 25px;
+    text-align: center;
+    transition: all 0.4s ease;
+    overflow: hidden;
+    cursor: pointer;
+}
 
         .carousel-item:before {
             content: '';
@@ -266,38 +267,80 @@
         .carousel-item:nth-child(6) { transform: rotateY(257.15deg) translateZ(300px); }
         .carousel-item:nth-child(7) { transform: rotateY(308.58deg) translateZ(300px); }
 
-        .photo-placeholder {
-            width: 200px;
-            height: 150px;
-            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+       .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
 
-     .photo-placeholder img {
+   .photo-placeholder img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 15px;
-    display: none; /* Oculto por defecto */
+    display: block;
 }
 
 .photo-placeholder.has-image img {
-    display: block; /* Mostrar cuando hay imagen */
+    display: block;
 }
 
 .photo-placeholder.has-image .dessert-icon {
-    display: none; /* Ocultar emoji cuando hay imagen */
+    display: none;
 }
 
+/* Texto que aparece al hacer clic */
+.item-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.95);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.carousel-item.show-text .item-content {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.item-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.item-description {
+    font-size: 1rem;
+    color: #636e72;
+    line-height: 1.5;
+    text-align: center;
+}
         .photo-placeholder:before {
             content: '';
             position: absolute;
@@ -443,210 +486,254 @@
         }
 
         /* BOTÓN DE MÚSICA MÁGICO - REEMPLAZAR */
-.music-control {
-    position: fixed;
-    top: 25px;
-    right: 25px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
+ .music-control {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-.magic-music-btn {
-    width: 70px;
-    height: 70px;
-    border: none;
-    border-radius: 50%;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #feca57);
-    background-size: 300% 300%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    color: white;
-    box-shadow: 
-        0 8px 32px rgba(255, 107, 107, 0.4),
-        0 0 0 4px rgba(255, 255, 255, 0.1),
-        inset 0 0 20px rgba(255, 255, 255, 0.2);
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    animation: musicPulse 2s ease-in-out infinite, gradientDance 4s ease infinite;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-}
+        .magic-music-btn {
+            width: 70px;
+            height: 70px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #feca57);
+            background-size: 300% 300%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 
+                0 8px 32px rgba(255, 107, 107, 0.4),
+                0 0 0 4px rgba(255, 255, 255, 0.1),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation: musicPulse 2s ease-in-out infinite, gradientDance 4s ease infinite;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
 
-.magic-music-btn:before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.4), transparent);
-    animation: musicSpin 3s linear infinite;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+        .magic-music-btn:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: musicSpin 3s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-.magic-music-btn:hover:before {
-    opacity: 1;
-}
+        .magic-music-btn:hover:before {
+            opacity: 1;
+        }
 
-.magic-music-btn:hover {
-    transform: scale(1.15) rotate(5deg);
-    box-shadow: 
-        0 15px 50px rgba(255, 107, 107, 0.6),
-        0 0 0 6px rgba(255, 255, 255, 0.2),
-        inset 0 0 30px rgba(255, 255, 255, 0.3);
-}
+        .magic-music-btn:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 
+                0 15px 50px rgba(255, 107, 107, 0.6),
+                0 0 0 6px rgba(255, 255, 255, 0.2),
+                inset 0 0 30px rgba(255, 255, 255, 0.3);
+        }
 
-.magic-music-btn.playing {
-    animation: musicPlaying 1s ease-in-out infinite, gradientDance 2s ease infinite;
-    box-shadow: 
-        0 0 40px rgba(255, 107, 107, 0.8),
-        0 0 80px rgba(78, 205, 196, 0.4),
-        0 0 0 8px rgba(255, 255, 255, 0.3);
-}
+        .magic-music-btn.playing {
+            animation: musicPlaying 1s ease-in-out infinite, gradientDance 2s ease infinite;
+            box-shadow: 
+                0 0 40px rgba(255, 107, 107, 0.8),
+                0 0 80px rgba(78, 205, 196, 0.4),
+                0 0 0 8px rgba(255, 255, 255, 0.3);
+        }
 
-.music-visualizer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+        .music-visualizer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-.music-visualizer.active {
-    opacity: 1;
-}
+        .music-visualizer.active {
+            opacity: 1;
+        }
 
-.music-bar {
-    width: 3px;
-    background: linear-gradient(to top, #ff6b6b, #4ecdc4);
-    border-radius: 2px;
-    animation: musicBars 0.8s ease-in-out infinite;
-}
+        .music-bar {
+            width: 3px;
+            background: linear-gradient(to top, #ff6b6b, #4ecdc4);
+            border-radius: 2px;
+            animation: musicBars 0.8s ease-in-out infinite;
+        }
 
-.music-bar:nth-child(1) { height: 12px; animation-delay: 0s; }
-.music-bar:nth-child(2) { height: 18px; animation-delay: 0.1s; }
-.music-bar:nth-child(3) { height: 8px; animation-delay: 0.2s; }
-.music-bar:nth-child(4) { height: 15px; animation-delay: 0.3s; }
-.music-bar:nth-child(5) { height: 10px; animation-delay: 0.4s; }
+        .music-bar:nth-child(1) { height: 12px; animation-delay: 0s; }
+        .music-bar:nth-child(2) { height: 18px; animation-delay: 0.1s; }
+        .music-bar:nth-child(3) { height: 8px; animation-delay: 0.2s; }
+        .music-bar:nth-child(4) { height: 15px; animation-delay: 0.3s; }
+        .music-bar:nth-child(5) { height: 10px; animation-delay: 0.4s; }
 
-.music-label {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    padding: 8px 16px;
-    border-radius: 25px;
-    color: white;
-    font-weight: 600;
-    font-size: 0.9rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    opacity: 0;
-    transform: translateX(20px);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    white-space: nowrap;
-}
+        /* NUEVO: Controles de canciones */
+        .song-selector {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            padding: 12px 16px;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.music-label.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
+        .song-selector.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-.music-waves {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+        .song-title {
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
 
-.music-waves.active {
-    opacity: 1;
-}
+        .song-controls {
+            display: flex;
+            gap: 8px;
+        }
 
-.music-wave {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    animation: musicWaveExpand 2s ease-out infinite;
-}
+        .song-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
 
-.music-wave:nth-child(1) { animation-delay: 0s; }
-.music-wave:nth-child(2) { animation-delay: 0.5s; }
-.music-wave:nth-child(3) { animation-delay: 1s; }
+        .song-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
 
-/* ANIMACIONES */
-@keyframes musicPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
+        .music-waves {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-@keyframes musicPlaying {
-    0%, 100% { transform: scale(1) rotate(0deg); }
-    25% { transform: scale(1.1) rotate(2deg); }
-    50% { transform: scale(1.15) rotate(0deg); }
-    75% { transform: scale(1.1) rotate(-2deg); }
-}
+        .music-waves.active {
+            opacity: 1;
+        }
 
-@keyframes gradientDance {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
+        .music-wave {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: musicWaveExpand 2s ease-out infinite;
+        }
 
-@keyframes musicSpin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+        .music-wave:nth-child(1) { animation-delay: 0s; }
+        .music-wave:nth-child(2) { animation-delay: 0.5s; }
+        .music-wave:nth-child(3) { animation-delay: 1s; }
 
-@keyframes musicBars {
-    0%, 100% { transform: scaleY(0.5); }
-    50% { transform: scaleY(1.5); }
-}
+        /* ANIMACIONES */
+        @keyframes musicPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
 
-@keyframes musicWaveExpand {
-    0% {
-        width: 40px;
-        height: 40px;
-        opacity: 1;
-    }
-    100% {
-        width: 120px;
-        height: 120px;
-        opacity: 0;
-    }
-}
+        @keyframes musicPlaying {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(2deg); }
+            50% { transform: scale(1.15) rotate(0deg); }
+            75% { transform: scale(1.1) rotate(-2deg); }
+        }
 
-/* Responsive para móviles */
-@media (max-width: 768px) {
-    .music-control {
-        top: 15px;
-        right: 15px;
-        gap: 10px;
-    }
-    
-    .magic-music-btn {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-    }
-    
-    .music-label {
-        font-size: 0.8rem;
-        padding: 6px 12px;
-    }
-}
+        @keyframes gradientDance {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes musicSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes musicBars {
+            0%, 100% { transform: scaleY(0.5); }
+            50% { transform: scaleY(1.5); }
+        }
+
+        @keyframes musicWaveExpand {
+            0% {
+                width: 40px;
+                height: 40px;
+                opacity: 1;
+            }
+            100% {
+                width: 120px;
+                height: 120px;
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .music-control {
+                top: 15px;
+                right: 15px;
+                gap: 8px;
+            }
+            
+            .magic-music-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .song-selector {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+
+            .song-title {
+                max-width: 100px;
+            }
+        }
+
+        /* Ocultar elementos de audio */
+        .audio-elements {
+            display: none;
+        }
 
         /* Responsive - VERSIÓN CORREGIDA */
         @media (max-width: 768px) {
@@ -760,25 +847,55 @@
 </head>
 <body>
 
-     <!-- BOTÓN DE MÚSICA MÁGICO - REEMPLAZAR -->
-<div class="music-control">
-    <div class="music-waves" id="musicWaves">
-        <div class="music-wave"></div>
-        <div class="music-wave"></div>
-        <div class="music-wave"></div>
+    <!-- ELEMENTOS DE AUDIO HTML -->
+    <div class="audio-elements">
+        <audio id="audio0" preload="none">
+            <source src="villancico.mp3" type="audio/mpeg">
+            <source src="villancico.ogg" type="audio/ogg">
+        </audio>
+        <audio id="audio1" preload="none">
+            <source src="cumpleanos.mp3" type="audio/mpeg">
+            <source src="cumpleanos.ogg" type="audio/ogg">
+        </audio>
+        <audio id="audio2" preload="none">
+            <source src="dulce.mp3" type="audio/mpeg">
+            <source src="dulce.ogg" type="audio/ogg">
+        </audio>
+        <audio id="audio3" preload="none">
+            <source src="celestial.mp3" type="audio/mpeg">
+            <source src="celestial.ogg" type="audio/ogg">
+        </audio>
+        <audio id="audio4" preload="none">
+            <source src="fiesta.mp3" type="audio/mpeg">
+            <source src="fiesta.ogg" type="audio/ogg">
+        </audio>
     </div>
-    <button class="magic-music-btn" id="magicMusicBtn">
-        <span class="music-icon" id="musicIcon">🎵</span>
-        <div class="music-visualizer" id="musicVisualizer">
-            <div class="music-bar"></div>
-            <div class="music-bar"></div>
-            <div class="music-bar"></div>
-            <div class="music-bar"></div>
-            <div class="music-bar"></div>
+
+    <!-- BOTÓN DE MÚSICA MÁGICO MEJORADO -->
+    <div class="music-control">
+        <div class="music-waves" id="musicWaves">
+            <div class="music-wave"></div>
+            <div class="music-wave"></div>
+            <div class="music-wave"></div>
         </div>
-    </button>
-    <div class="music-label" id="musicLabel">🎶 Música mágica</div>
-</div>
+        <button class="magic-music-btn" id="magicMusicBtn">
+            <span class="music-icon" id="musicIcon">🎵</span>
+            <div class="music-visualizer" id="musicVisualizer">
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+            </div>
+        </button>
+        <div class="song-selector visible" id="songSelector">
+            <div class="song-title" id="songTitle">🎶 Música mágica</div>
+            <div class="song-controls">
+                <button class="song-btn" id="prevBtn" title="Canción anterior">⏮️</button>
+                <button class="song-btn" id="nextBtn" title="Siguiente canción">⏭️</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Partículas de fondo -->
     <div class="particles" id="particles"></div>
@@ -806,71 +923,86 @@
 <div class="carousel-item">
     <div class="photo-placeholder has-image">
         <img src="ale1.PNG" alt="Tu foto">
-        <div class="dessert-icon">👩‍🍳</div> <!-- Se oculta automáticamente con CSS cuando hay imagen -->
+        <div class="dessert-icon">👩‍🍳</div>
     </div>
-    <div class="item-title">La Reina de los Dulces</div>
-    <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus creaciones</div>
+    <div class="item-content">
+        <div class="item-title">La Reina de los Dulces</div>
+        <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus creaciones</div>
+    </div>
 </div>
 
 <!-- Panel 2: Cupcakes -->
 <div class="carousel-item">
     <div class="photo-placeholder has-image">
-        <img src="ale2.PNG" alt="Cupcakes">
-        <div class="dessert-icon">🧁</div>
+        <img src="ale2.PNG" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
     </div>
-    <div class="item-title">Cupcakes Mágicos</div>
-    <div class="item-description">Cada cupcake que haces es una pequeña obra de arte que alegra corazones y celebraciones</div>
+    <div class="item-content">
+        <div class="item-title">La Reina de los Dulces</div>
+        <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus creaciones</div>
+    </div>
 </div>
 
 <!-- Panel 3: Tortas -->
 <div class="carousel-item">
     <div class="photo-placeholder has-image">
-        <img src="ale5.jpg" alt="Tortas">
-        <div class="dessert-icon">🎂</div>
+        <img src="ale9.jpg" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
     </div>
-    <div class="item-title">Tortas de Ensueño</div>
-    <div class="item-description">Tus tortas cuentan historias de amor, celebración y momentos únicos e irrepetibles</div>
+    <div class="item-content">
+        <div class="item-title">La Reina de los Dulces</div>
+        <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus creaciones</div>
+    </div>
 </div>
         
         <!-- Panel 4: Galletas Artísticas -->
         <div class="carousel-item">
-            <div class="photo-placeholder" id="photo4">
-                <img src="ale6.jpg" alt="Galletas" onload="showImage(this)" onerror="hideImage(this)">
-                <div class="dessert-icon">🍪</div>
-            </div>
-            <div class="item-title">Galletas con Alma</div>
-            <div class="item-description">En cada galleta pones tu corazón, creando no solo sabor sino también felicidad pura</div>
-        </div>
-        
+    <div class="photo-placeholder has-image">
+        <img src="ale6.jpg" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
+    </div>
+    <div class="item-content">
+        <div class="item-title">La Reina de los Dulces</div>
+        <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus creaciones</div>
+    </div>
+</div>
         <!-- Panel 5: Postres Únicos -->
        <div class="carousel-item">
-            <div class="photo-placeholder" id="photo4">
-                <img src="ale7.jpg" alt="Galletas" onload="showImage(this)" onerror="hideImage(this)">
-                <div class="dessert-icon">🍪</div>
-            </div>
-            <div class="item-title">Galletas con Alma</div>
-            <div class="item-description">En cada galleta pones tu corazón, creando no solo sabor sino también felicidad pura</div>
-        </div>
+    <div class="photo-placeholder has-image">
+        <img src="ale10.jpg" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
+    </div>
+    <div class="item-content">
+        <div class="item-title">La Reina de los Dulces</div>
+        <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus creaciones</div>
+    </div>
+</div>
         
         <!-- Panel 6: Sabor Único Brand -->
-        <div class="carousel-item">
-            <div class="photo-placeholder" id="photo6">
-                <img src="ale9.jpg" alt="Sabor Único" onload="showImage(this)" onerror="hideImage(this)">
-                <div class="dessert-icon">⭐</div>
-            </div>
-            <div class="item-title">Sabor Único</div>
-            <div class="item-description">Tu marca personal es sinónimo de calidad, amor y esa magia especial que solo tú tienes</div>
-        </div>
+       <div class="carousel-item">
+    <div class="photo-placeholder has-image">
+        <img src="ale5.jpg" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
+    </div>
+    <div class="item-content">
+        <div class="item-title">La Reina de los Dulces</div>
+        <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus creaciones</div>
+    </div>
+</div>
 
         <!-- Panel 7: Tus Manos Creadoras -->
         <div class="carousel-item">
-            <div class="photo-placeholder" id="photo7">
-                <img src="ale10.jpg" alt="Manos creadoras" onload="showImage(this)" onerror="hideImage(this)">
-                <div class="dessert-icon">👐</div>
-            </div>
-            <div class="item-title">Manos de Oro</div>
-            <div class="item-description">Con tus manos creas no solo dulces, sino momentos especiales y recuerdos que duran para siempre</div>
-        </div>
+    <div class="photo-placeholder has-image">
+        <img src="ale7.jpg" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
+    </div>
+    <div class="item-content">
+        <div class="item-title">La Reina de los Dulces</div>
+        <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus creaciones</div>
+    </div>
+
+    
+</div>
 
 </div>
 
@@ -1201,64 +1333,222 @@
         });
 
        // CONTROL DE MÚSICA MÁGICO - REEMPLAZAR
-const audio = new Audio('villancico.mp3');
-let isPlaying = false;
+// CONTROL DE MÚSICA MEJORADO CON 5 CANCIONES
+        const songs = [
+            { title: "Villancico Mágico", audioId: "audio0", emoji: "🎄" },
+            { title: "Cumpleaños Feliz", audioId: "audio1", emoji: "🎂" },
+            { title: "Dulce Melodía", audioId: "audio2", emoji: "🍰" },
+            { title: "Música Celestial", audioId: "audio3", emoji: "✨" },
+            { title: "Fiesta Mágica", audioId: "audio4", emoji: "🎉" }
+        ];
 
-const magicMusicBtn = document.getElementById('magicMusicBtn');
-const musicIcon = document.getElementById('musicIcon');
-const musicVisualizer = document.getElementById('musicVisualizer');
-const musicLabel = document.getElementById('musicLabel');
-const musicWaves = document.getElementById('musicWaves');
+         let currentSongIndex = 0;
+        let isPlaying = false;
+        let currentAudio = null;
 
-// Mostrar label al cargar
-setTimeout(() => {
-    musicLabel.classList.add('visible');
-}, 1000);
+        const magicMusicBtn = document.getElementById('magicMusicBtn');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicVisualizer = document.getElementById('musicVisualizer');
+        const songSelector = document.getElementById('songSelector');
+        const songTitle = document.getElementById('songTitle');
+        const musicWaves = document.getElementById('musicWaves');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
 
-// Ocultar label después de 3 segundos
-setTimeout(() => {
-    musicLabel.classList.remove('visible');
-}, 4000);
+        // Función para obtener el elemento de audio actual
+        function getCurrentAudio() {
+            return document.getElementById(songs[currentSongIndex].audioId);
+        }
 
-magicMusicBtn.addEventListener('click', function() {
-    if (isPlaying) {
-        // Pausar música
-        audio.pause();
-        audio.currentTime = 0;
-        
-        // Cambiar apariencia
-        this.classList.remove('playing');
-        musicIcon.style.display = 'block';
-        musicVisualizer.classList.remove('active');
-        musicWaves.classList.remove('active');
-        musicIcon.textContent = '🎵';
-        
-        // Mostrar label
-        musicLabel.textContent = '🎶 Música mágica';
-        musicLabel.classList.add('visible');
-        setTimeout(() => musicLabel.classList.remove('visible'), 2000);
-        
-    } else {
-        // Reproducir música
-        audio.play().catch(e => console.log('Error al reproducir:', e));
-        
-        // Cambiar apariencia
-        this.classList.add('playing');
-        musicIcon.style.display = 'none';
-        musicVisualizer.classList.add('active');
-        musicWaves.classList.add('active');
-        
-        // Mostrar label
-        musicLabel.textContent = '🎶 ¡Sonando!';
-        musicLabel.classList.add('visible');
-        setTimeout(() => musicLabel.classList.remove('visible'), 2000);
-    }
-    
-    isPlaying = !isPlaying;
-    
-    // Efecto de chispas al hacer clic
-    createMusicSparkles(this);
-});
+         // Función para actualizar la información de la canción
+        function updateSongDisplay() {
+            const song = songs[currentSongIndex];
+            songTitle.textContent = `${song.emoji} ${song.title}`;
+            currentAudio = getCurrentAudio();
+        }
+
+        // Función para cambiar canción
+        function changeSong(direction) {
+            const wasPlaying = isPlaying;
+            
+            // Detener canción actual
+            if (isPlaying && currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+            
+            // Cambiar índice
+            if (direction === 'next') {
+                currentSongIndex = (currentSongIndex + 1) % songs.length;
+            } else {
+                currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            }
+            
+            // Actualizar display y audio
+            updateSongDisplay();
+            
+            // Si estaba reproduciéndose, continuar con nueva canción
+            if (wasPlaying) {
+                playCurrentSong();
+            }
+            
+            // Efecto visual de cambio
+            createMusicSparkles(magicMusicBtn);
+        }
+
+        // Función para reproducir canción actual
+        function playCurrentSong() {
+            if (!currentAudio) return;
+            
+            // Intentar reproducir, manejar errores silenciosamente
+            const playPromise = currentAudio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(e => {
+                    console.log('Audio no disponible, continuando con efectos visuales');
+                    // Continuar con efectos visuales aunque no haya audio
+                });
+            }
+            
+            // Cambiar apariencia
+            magicMusicBtn.classList.add('playing');
+            musicIcon.style.display = 'none';
+            musicVisualizer.classList.add('active');
+            musicWaves.classList.add('active');
+            
+            isPlaying = true;
+        }
+
+        // Función para pausar canción
+        function pauseCurrentSong() {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+            
+            // Cambiar apariencia
+            magicMusicBtn.classList.remove('playing');
+            musicIcon.style.display = 'block';
+            musicVisualizer.classList.remove('active');
+            musicWaves.classList.remove('active');
+            musicIcon.textContent = '🎵';
+            
+            isPlaying = false;
+        }
+
+        // Event Listeners
+        magicMusicBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                pauseCurrentSong();
+            } else {
+                playCurrentSong();
+            }
+            createMusicSparkles(this);
+        });
+
+        prevBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            changeSong('prev');
+        });
+
+        nextBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            changeSong('next');
+        });
+
+        // Auto-siguiente canción al terminar
+        songs.forEach((song, index) => {
+            const audio = document.getElementById(song.audioId);
+            audio.addEventListener('ended', function() {
+                if (index === currentSongIndex) {
+                    changeSong('next');
+                    if (isPlaying) {
+                        playCurrentSong();
+                    }
+                }
+            });
+        });
+
+        // Función para crear chispas musicales
+        function createMusicSparkles(button) {
+            const rect = button.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const musicEmojis = ['🎵', '🎶', '🎼', '♪', '♫', '✨', '💫', '🌟'];
+            
+            for (let i = 0; i < 12; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.textContent = musicEmojis[Math.floor(Math.random() * musicEmojis.length)];
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = centerX + 'px';
+                sparkle.style.top = centerY + 'px';
+                sparkle.style.fontSize = '1.2rem';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '1001';
+                sparkle.style.userSelect = 'none';
+                
+                const angle = (i / 12) * Math.PI * 2;
+                const distance = 80 + Math.random() * 40;
+                const endX = centerX + Math.cos(angle) * distance;
+                const endY = centerY + Math.sin(angle) * distance;
+                
+                sparkle.animate([
+                    { 
+                        transform: 'translate(-50%, -50%) scale(0) rotate(0deg)', 
+                        opacity: 1 
+                    },
+                    { 
+                        transform: `translate(${endX - centerX - 25}px, ${endY - centerY - 25}px) scale(1.5) rotate(360deg)`, 
+                        opacity: 0 
+                    }
+                ], {
+                    duration: 1200,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1200);
+            }
+        }
+
+        // Hover effects
+        magicMusicBtn.addEventListener('mouseenter', function() {
+            songSelector.classList.add('visible');
+        });
+
+        // Teclado shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        changeSong('prev');
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        changeSong('next');
+                        break;
+                    case ' ':
+                        e.preventDefault();
+                        if (isPlaying) {
+                            pauseCurrentSong();
+                        } else {
+                            playCurrentSong();
+                        }
+                        break;
+                }
+            }
+        });
+
+        // Inicializar al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSongDisplay();
+            // Asegurar que los controles estén visibles
+            songSelector.classList.add('visible');
+        });
+
+        // Inicializar inmediatamente también
+        updateSongDisplay();
 
 // Función para crear chispas musicales
 function createMusicSparkles(button) {
@@ -1409,6 +1699,36 @@ document.addEventListener('keydown', function(e) {
             showLanding();
             break;
     }
+});
+
+// Agregar funcionalidad de clic para mostrar/ocultar texto
+document.addEventListener('DOMContentLoaded', function() {
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    
+    carouselItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            // Remover clase de otros items
+            carouselItems.forEach(otherItem => {
+                if (otherItem !== this) {
+                    otherItem.classList.remove('show-text');
+                }
+            });
+            
+            // Toggle en el item actual
+            this.classList.toggle('show-text');
+        });
+    });
+    
+    // Cerrar texto al hacer clic fuera
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.carousel-item')) {
+            carouselItems.forEach(item => {
+                item.classList.remove('show-text');
+            });
+        }
+    });
 });
     </script>
 </body>

@@ -1068,142 +1068,158 @@
         }
 
         @media (max-width: 768px) {
-    .main-title {
-        font-size: 3rem;
-    }
+            .main-title {
+                font-size: 3rem;
+            }
 
-    .main-carousel {
-        width: 300px;
-        height: 300px;
-    }
+            .main-carousel {
+                width: 300px;
+                height: 300px;
+            }
 
-    .carousel-item {
-        width: 200px;
-        height: 280px;
-        padding: 15px;
-    }
+            .carousel-item {
+                width: 200px;
+                height: 280px;
+                padding: 15px;
+            }
 
-    /* ✅ CORRECCIÓN: Mantener 100% para que cubra toda la card */
-    .photo-placeholder {
-        width: 100%;  /* Cambiado de 140px a 100% */
-        height: 100%; /* Cambiado de 100px a 100% */
-    }
+            /* ✅ CORRECCIÓN: Mantener 100% para que cubra toda la card */
+            .photo-placeholder {
+                width: 100%;
+                /* Cambiado de 140px a 100% */
+                height: 100%;
+                /* Cambiado de 100px a 100% */
+            }
 
-    /* Posicionamiento específico para móviles */
-    .carousel-item:nth-child(1) {
-        transform: rotateY(0deg) translateZ(250px);
-    }
-    .carousel-item:nth-child(2) {
-        transform: rotateY(51.43deg) translateZ(250px);
-    }
-    .carousel-item:nth-child(3) {
-        transform: rotateY(102.86deg) translateZ(250px);
-    }
-    .carousel-item:nth-child(4) {
-        transform: rotateY(154.29deg) translateZ(250px);
-    }
-    .carousel-item:nth-child(5) {
-        transform: rotateY(205.72deg) translateZ(250px);
-    }
-    .carousel-item:nth-child(6) {
-        transform: rotateY(257.15deg) translateZ(250px);
-    }
-    .carousel-item:nth-child(7) {
-        transform: rotateY(308.58deg) translateZ(250px);
-    }
+            /* Posicionamiento específico para móviles */
+            .carousel-item:nth-child(1) {
+                transform: rotateY(0deg) translateZ(250px);
+            }
 
-    .dessert-icon {
-        font-size: 2.5rem;
-    }
+            .carousel-item:nth-child(2) {
+                transform: rotateY(51.43deg) translateZ(250px);
+            }
 
-    .item-title {
-        font-size: 1.1rem;
-    }
+            .carousel-item:nth-child(3) {
+                transform: rotateY(102.86deg) translateZ(250px);
+            }
 
-    .item-description {
-        font-size: 0.8rem;
-    }
+            .carousel-item:nth-child(4) {
+                transform: rotateY(154.29deg) translateZ(250px);
+            }
 
-    .controls {
-        bottom: 20px;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+            .carousel-item:nth-child(5) {
+                transform: rotateY(205.72deg) translateZ(250px);
+            }
 
-    .control-btn {
-        padding: 8px 12px;
-        font-size: 0.8rem;
-    }
+            .carousel-item:nth-child(6) {
+                transform: rotateY(257.15deg) translateZ(250px);
+            }
 
-    .back-btn {
-        top: 15px;
-        left: 15px;
-        padding: 10px 15px;
-        font-size: 0.9rem;
-    }
+            .carousel-item:nth-child(7) {
+                transform: rotateY(308.58deg) translateZ(250px);
+            }
 
-    .subtitle {
-        font-size: 1.2rem;
-        padding: 0 20px;
-    }
+            .dessert-icon {
+                font-size: 2.5rem;
+            }
 
-    .enter-btn {
-        padding: 15px 30px;
-        font-size: 1.1rem;
-    }
-}
+            .item-title {
+                font-size: 1.1rem;
+            }
 
-/* Para pantallas muy pequeñas */
-@media (max-width: 480px) {
-    .main-carousel {
-        width: 250px;
-        height: 250px;
-    }
+            .item-description {
+                font-size: 0.8rem;
+            }
 
-    .carousel-item {
-        width: 160px;
-        height: 220px;
-        padding: 12px;
-    }
+            .controls {
+                bottom: 20px;
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
 
-    /* ✅ CORRECCIÓN: Mantener 100% también aquí */
-    .photo-placeholder {
-        width: 100%;  /* Cambiado de 120px a 100% */
-        height: 100%; /* Cambiado de 80px a 100% */
-    }
+            .control-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
 
-    /* Ajuste adicional para pantallas muy pequeñas */
-    .carousel-item:nth-child(1) {
-        transform: rotateY(0deg) translateZ(200px);
-    }
-    .carousel-item:nth-child(2) {
-        transform: rotateY(51.43deg) translateZ(200px);
-    }
-    .carousel-item:nth-child(3) {
-        transform: rotateY(102.86deg) translateZ(200px);
-    }
-    .carousel-item:nth-child(4) {
-        transform: rotateY(154.29deg) translateZ(200px);
-    }
-    .carousel-item:nth-child(5) {
-        transform: rotateY(205.72deg) translateZ(200px);
-    }
-    .carousel-item:nth-child(6) {
-        transform: rotateY(257.15deg) translateZ(200px);
-    }
-    .carousel-item:nth-child(7) {
-        transform: rotateY(308.58deg) translateZ(200px);
-    }
+            .back-btn {
+                top: 15px;
+                left: 15px;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
 
-    .item-title {
-        font-size: 1rem;
-    }
+            .subtitle {
+                font-size: 1.2rem;
+                padding: 0 20px;
+            }
 
-    .item-description {
-        font-size: 0.7rem;
-    }
-}
+            .enter-btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .main-carousel {
+                width: 250px;
+                height: 250px;
+            }
+
+            .carousel-item {
+                width: 160px;
+                height: 220px;
+                padding: 12px;
+            }
+
+            /* ✅ CORRECCIÓN: Mantener 100% también aquí */
+            .photo-placeholder {
+                width: 100%;
+                /* Cambiado de 120px a 100% */
+                height: 100%;
+                /* Cambiado de 80px a 100% */
+            }
+
+            /* Ajuste adicional para pantallas muy pequeñas */
+            .carousel-item:nth-child(1) {
+                transform: rotateY(0deg) translateZ(200px);
+            }
+
+            .carousel-item:nth-child(2) {
+                transform: rotateY(51.43deg) translateZ(200px);
+            }
+
+            .carousel-item:nth-child(3) {
+                transform: rotateY(102.86deg) translateZ(200px);
+            }
+
+            .carousel-item:nth-child(4) {
+                transform: rotateY(154.29deg) translateZ(200px);
+            }
+
+            .carousel-item:nth-child(5) {
+                transform: rotateY(205.72deg) translateZ(200px);
+            }
+
+            .carousel-item:nth-child(6) {
+                transform: rotateY(257.15deg) translateZ(200px);
+            }
+
+            .carousel-item:nth-child(7) {
+                transform: rotateY(308.58deg) translateZ(200px);
+            }
+
+            .item-title {
+                font-size: 1rem;
+            }
+
+            .item-description {
+                font-size: 0.7rem;
+            }
+        }
     </style>
 </head>
 
@@ -1281,97 +1297,90 @@
     <div class="carousel-container" id="carouselContainer">
         <div class="main-carousel" id="mainCarousel">
 
-            <!-- Panel 1: Foto Personal -->
-            <div class="carousel-item">
-                <div class="photo-placeholder has-image">
-                    <img src="ale1.PNG" alt="Tu foto">
-                    <div class="dessert-icon">👩‍🍳</div>
-                </div>
-                <div class="item-content">
-                    <div class="item-title">La Reina de los Dulces</div>
-                    <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus
-                        creaciones</div>
-                </div>
-            </div>
+           <!-- Panel 1: Foto Personal -->
+<div class="carousel-item">
+    <div class="photo-placeholder has-image">
+        <img src="ale1.PNG" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
+    </div>
+    <div class="item-content">
+        <div class="item-title">Amor Inmerecido</div>
+        <div class="item-description">“Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores, Cristo murió por nosotros.” — Romanos 5:8</div>
+    </div>
+</div>
 
-            <!-- Panel 2: Cupcakes -->
-            <div class="carousel-item">
-                <div class="photo-placeholder has-image">
-                    <img src="ale2.PNG" alt="Tu foto">
-                    <div class="dessert-icon">👩‍🍳</div>
-                </div>
-                <div class="item-content">
-                    <div class="item-title">La Reina de los Dulces</div>
-                    <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus
-                        creaciones</div>
-                </div>
-            </div>
+<!-- Panel 2: Cupcakes -->
+<div class="carousel-item">
+    <div class="photo-placeholder has-image">
+        <img src="ale2.PNG" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
+    </div>
+    <div class="item-content">
+        <div class="item-title">Refugio para el Corazón</div>
+        <div class="item-description">“Cercano está Jehová a los quebrantados de corazón; y salva a los contritos de espíritu.” — Salmos 34:18</div>
+    </div>
+</div>
 
-            <!-- Panel 3: Tortas -->
-            <div class="carousel-item">
-                <div class="photo-placeholder has-image">
-                    <img src="ale9.jpg" alt="Tu foto">
-                    <div class="dessert-icon">👩‍🍳</div>
-                </div>
-                <div class="item-content">
-                    <div class="item-title">La Reina de los Dulces</div>
-                    <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus
-                        creaciones</div>
-                </div>
-            </div>
+<!-- Panel 3: Tortas -->
+<div class="carousel-item">
+    <div class="photo-placeholder has-image">
+        <img src="ale9.jpg" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
+    </div>
+    <div class="item-content">
+        <div class="item-title">Paz Inquebrantable</div>
+        <div class="item-description">“Tú guardarás en completa paz a aquel cuyo pensamiento en ti persevera; porque en ti ha confiado.” — Isaías 26:3</div>
+    </div>
+</div>
 
-            <!-- Panel 4: Galletas Artísticas -->
-            <div class="carousel-item">
-                <div class="photo-placeholder has-image">
-                    <img src="ale6.jpg" alt="Tu foto">
-                    <div class="dessert-icon">👩‍🍳</div>
-                </div>
-                <div class="item-content">
-                    <div class="item-title">La Reina de los Dulces</div>
-                    <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus
-                        creaciones</div>
-                </div>
-            </div>
-            <!-- Panel 5: Postres Únicos -->
-            <div class="carousel-item">
-                <div class="photo-placeholder has-image">
-                    <img src="ale10.jpg" alt="Tu foto">
-                    <div class="dessert-icon">👩‍🍳</div>
-                </div>
-                <div class="item-content">
-                    <div class="item-title">La Reina de los Dulces</div>
-                    <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus
-                        creaciones</div>
-                </div>
-            </div>
+<!-- Panel 4: Galletas Artísticas -->
+<div class="carousel-item">
+    <div class="photo-placeholder has-image">
+        <img src="ale6.jpg" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
+    </div>
+    <div class="item-content">
+        <div class="item-title">Fuerza en la Tormenta</div>
+        <div class="item-description">“No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te esfuerzo; siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia.” — Isaías 41:10</div>
+    </div>
+</div>
 
-            <!-- Panel 6: Sabor Único Brand -->
-            <div class="carousel-item">
-                <div class="photo-placeholder has-image">
-                    <img src="ale5.jpg" alt="Tu foto">
-                    <div class="dessert-icon">👩‍🍳</div>
-                </div>
-                <div class="item-content">
-                    <div class="item-title">La Reina de los Dulces</div>
-                    <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus
-                        creaciones</div>
-                </div>
-            </div>
+<!-- Panel 5: Postres Únicos -->
+<div class="carousel-item">
+    <div class="photo-placeholder has-image">
+        <img src="ale10.jpg" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
+    </div>
+    <div class="item-content">
+        <div class="item-title">Nunca Sola</div>
+        <div class="item-description">“Esforzaos y cobrad ánimo; no temáis, ni tengáis miedo de ellos, porque Jehová tu Dios es el que va contigo; no te dejará, ni te desamparará.” — Deuteronomio 31:6</div>
+    </div>
+</div>
 
-            <!-- Panel 7: Tus Manos Creadoras -->
-            <div class="carousel-item">
-                <div class="photo-placeholder has-image">
-                    <img src="ale7.jpg" alt="Tu foto">
-                    <div class="dessert-icon">👩‍🍳</div>
-                </div>
-                <div class="item-content">
-                    <div class="item-title">La Reina de los Dulces</div>
-                    <div class="item-description">Tu sonrisa es el ingrediente secreto que hace especiales todas tus
-                        creaciones</div>
-                </div>
+<!-- Panel 6: Sabor Único Brand -->
+<div class="carousel-item">
+    <div class="photo-placeholder has-image">
+        <img src="ale5.jpg" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
+    </div>
+    <div class="item-content">
+        <div class="item-title">Paz Verdadera</div>
+        <div class="item-description">“La paz os dejo, mi paz os doy; yo no os la doy como el mundo la da. No se turbe vuestro corazón, ni tenga miedo.” — Juan 14:27</div>
+    </div>
+</div>
 
+<!-- Panel 7: Tus Manos Creadoras -->
+<div class="carousel-item">
+    <div class="photo-placeholder has-image">
+        <img src="ale7.jpg" alt="Tu foto">
+        <div class="dessert-icon">👩‍🍳</div>
+    </div>
+    <div class="item-content">
+        <div class="item-title">Sanados por Amor</div>
+        <div class="item-description">“Mas él herido fue por nuestras rebeliones, molido por nuestros pecados; el castigo de nuestra paz fue sobre él, y por su llaga fuimos nosotros curados.” — Isaías 53:5</div>
+    </div>
+</div>
 
-            </div>
 
         </div>
 

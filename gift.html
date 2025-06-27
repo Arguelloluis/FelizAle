@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎂 Feliz Cumpleaños - Sabor Único 🎂</title>
+    <title>🎂 Feliz Cumpleaños - ALE 🎂</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@400;700&display=swap');
 
@@ -1220,6 +1220,22 @@
                 font-size: 0.7rem;
             }
         }
+        /* Solo agregar estas reglas adicionales para la 8va tarjeta */
+.carousel-item:nth-child(8) {
+    transform: rotateY(360deg) translateZ(300px);
+}
+
+@media (max-width: 768px) {
+    .carousel-item:nth-child(8) {
+        transform: rotateY(360deg) translateZ(250px);
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-item:nth-child(8) {
+        transform: rotateY(360deg) translateZ(200px);
+    }
+}
     </style>
 </head>
 
@@ -1348,7 +1364,7 @@
 <!-- Panel 5: Postres Únicos -->
 <div class="carousel-item">
     <div class="photo-placeholder has-image">
-        <img src="ale10.jpg" alt="Tu foto">
+        <img src="ale4.jpg" alt="Tu foto">
         <div class="dessert-icon">👩‍🍳</div>
     </div>
     <div class="item-content">
@@ -1372,7 +1388,7 @@
 <!-- Panel 7: Tus Manos Creadoras -->
 <div class="carousel-item">
     <div class="photo-placeholder has-image">
-        <img src="ale7.jpg" alt="Tu foto">
+        <img src="ale7.jpeg" alt="Tu foto">
         <div class="dessert-icon">👩‍🍳</div>
     </div>
     <div class="item-content">
@@ -1381,6 +1397,17 @@
     </div>
 </div>
 
+<!-- Panel 8: Nueva tarjeta -->
+<div class="carousel-item">
+    <div class="photo-placeholder has-image">
+        <img src="ale13.jpeg" alt="Tu foto">
+        <div class="dessert-icon">🍰</div>
+    </div>
+    <div class="item-content">
+        <div class="item-title">Fortaleza Divina</div>
+        <div class="item-description">"Todo lo puedo en Cristo que me fortalece." — Filipenses 4:13</div>
+    </div>
+</div>
 
         </div>
 

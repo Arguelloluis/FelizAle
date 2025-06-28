@@ -1236,6 +1236,191 @@
         transform: rotateY(360deg) translateZ(200px);
     }
 }
+
+/* -----------------------------------------------------------*/
+
+
+/* Posicionamiento específico para cada carta - DESKTOP (8 tarjetas) */
+.carousel-item:nth-child(1) {
+    transform: rotateY(0deg) translateZ(360px);
+}
+
+.carousel-item:nth-child(2) {
+    transform: rotateY(45deg) translateZ(360px);
+}
+
+.carousel-item:nth-child(3) {
+    transform: rotateY(90deg) translateZ(360px);
+}
+
+.carousel-item:nth-child(4) {
+    transform: rotateY(135deg) translateZ(360px);
+}
+
+.carousel-item:nth-child(5) {
+    transform: rotateY(180deg) translateZ(360px);
+}
+
+.carousel-item:nth-child(6) {
+    transform: rotateY(225deg) translateZ(360px);
+}
+
+.carousel-item:nth-child(7) {
+    transform: rotateY(270deg) translateZ(360px);
+}
+
+.carousel-item:nth-child(8) {
+    transform: rotateY(315deg) translateZ(360px);
+}
+
+/* Responsive - móviles (8 tarjetas) */
+@media (max-width: 768px) {
+    .carousel-item:nth-child(1) {
+        transform: rotateY(0deg) translateZ(250px);
+    }
+
+    .carousel-item:nth-child(2) {
+        transform: rotateY(45deg) translateZ(250px);
+    }
+
+    .carousel-item:nth-child(3) {
+        transform: rotateY(90deg) translateZ(250px);
+    }
+
+    .carousel-item:nth-child(4) {
+        transform: rotateY(135deg) translateZ(250px);
+    }
+
+    .carousel-item:nth-child(5) {
+        transform: rotateY(180deg) translateZ(250px);
+    }
+
+    .carousel-item:nth-child(6) {
+        transform: rotateY(225deg) translateZ(250px);
+    }
+
+    .carousel-item:nth-child(7) {
+        transform: rotateY(270deg) translateZ(250px);
+    }
+
+    .carousel-item:nth-child(8) {
+        transform: rotateY(315deg) translateZ(250px);
+    }
+}
+
+/* Para pantallas muy pequeñas (8 tarjetas) */
+@media (max-width: 480px) {
+    .carousel-item:nth-child(1) {
+        transform: rotateY(0deg) translateZ(200px);
+    }
+
+    .carousel-item:nth-child(2) {
+        transform: rotateY(45deg) translateZ(200px);
+    }
+
+    .carousel-item:nth-child(3) {
+        transform: rotateY(90deg) translateZ(200px);
+    }
+
+    .carousel-item:nth-child(4) {
+        transform: rotateY(135deg) translateZ(200px);
+    }
+
+    .carousel-item:nth-child(5) {
+        transform: rotateY(180deg) translateZ(200px);
+    }
+
+    .carousel-item:nth-child(6) {
+        transform: rotateY(225deg) translateZ(200px);
+    }
+
+    .carousel-item:nth-child(7) {
+        transform: rotateY(270deg) translateZ(200px);
+    }
+
+    .carousel-item:nth-child(8) {
+        transform: rotateY(315deg) translateZ(200px);
+    }
+}
+
+/* Estilos para videos en las tarjetas */
+.item-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.carousel-item.show-video .item-video {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.video-player {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    max-height: 200px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.video-title {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 15px;
+    text-align: center;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.close-video-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.close-video-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+/* Responsive para videos */
+@media (max-width: 768px) {
+    .video-player {
+        max-width: 160px;
+        max-height: 120px;
+    }
+    
+    .video-title {
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+}
     </style>
 </head>
 
@@ -1313,18 +1498,21 @@
     <div class="carousel-container" id="carouselContainer">
         <div class="main-carousel" id="mainCarousel">
 
-           <!-- Panel 1: Foto Personal -->
-<div class="carousel-item">
+           <div class="carousel-item">
     <div class="photo-placeholder has-image">
         <img src="ale1.PNG" alt="Tu foto">
         <div class="dessert-icon">👩‍🍳</div>
     </div>
-    <div class="item-content">
-        <div class="item-title">Amor Inmerecido</div>
-        <div class="item-description">“Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores, Cristo murió por nosotros.” — Romanos 5:8</div>
+    <div class="item-video">
+        <button class="close-video-btn" onclick="closeVideo(this)">✕</button>
+        <video class="video-player" controls preload="none">
+            <source src="creep.mp4" type="video/mp4">
+            <source src="video1.webm" type="video/webm">
+            Tu navegador no soporta videos HTML5.
+        </video>
+        <div class="video-title">💖 Mensaje especial para ti</div>
     </div>
 </div>
-
 <!-- Panel 2: Cupcakes -->
 <div class="carousel-item">
     <div class="photo-placeholder has-image">
@@ -2135,6 +2323,54 @@
                     }
                 });
             });
+
+            // Función para mostrar video al hacer clic
+function toggleVideo(element) {
+    const allItems = document.querySelectorAll('.carousel-item');
+    
+    // Cerrar otros videos abiertos
+    allItems.forEach(item => {
+        if (item !== element) {
+            item.classList.remove('show-video');
+            const video = item.querySelector('video');
+            if (video) video.pause();
+        }
+    });
+    
+    // Toggle del video actual
+    if (element.classList.contains('show-video')) {
+        element.classList.remove('show-video');
+        const video = element.querySelector('video');
+        if (video) video.pause();
+    } else {
+        element.classList.add('show-video');
+        const video = element.querySelector('video');
+        if (video) {
+            video.load(); // Cargar el video
+            video.play().catch(e => console.log('Error reproduciendo video:', e));
+        }
+    }
+}
+
+// Función para cerrar video
+function closeVideo(button) {
+    const carouselItem = button.closest('.carousel-item');
+    carouselItem.classList.remove('show-video');
+    const video = carouselItem.querySelector('video');
+    if (video) video.pause();
+}
+
+// Agregar event listeners cuando se carga la página
+document.addEventListener('DOMContentLoaded', function() {
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    carouselItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            if (!e.target.closest('.item-video')) {
+                toggleVideo(this);
+            }
+        });
+    });
+});
         </script>
 </body>
 
